@@ -1,6 +1,9 @@
 import pygame
 import random 
 
+# I included this code in the repo as a demonstration of the starting code 
+# generated from following the tutorial.
+
 pygame.init()
 
 class DrawInfo:
@@ -60,7 +63,6 @@ class DrawInfo:
             self.start_x = (self.SIDE_PAD // 2) + ((self.screen - self.actual_block_space) // 2)
         else:
             self.start_x = self.SIDE_PAD // 2
-#vid 14.40
 
 #takes in class instance, clears screen, then draws the bars for each value in list via draw_list function
 def draw(draw_info, algo_name, ascending):

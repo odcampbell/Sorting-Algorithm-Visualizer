@@ -6,6 +6,7 @@ import random
 
 pygame.init()
 
+# This class holds the majority of the data needed for drawing
 class DrawingInfo: 
     
     BLACK = 0, 0, 0     #colors
@@ -22,8 +23,8 @@ class DrawingInfo:
     TOP_PAD = 190 
     listCount = 50
                                      
-    FONT = pygame.font.SysFont('comicsans',17) # Font object for writing in pygame given style and size
-    LARGE_FONT = pygame.font.SysFont('comicsans',30)
+    FONT = pygame.font.SysFont('comicsans', 17) # Font object for writing in pygame given style and size
+    LARGE_FONT = pygame.font.SysFont('comicsans', 30)
 
     GREY_GRADIENTS = [ #used to diferentiate bars
        (128, 128, 128),
@@ -43,7 +44,7 @@ class DrawingInfo:
         (205, 0, 145)
     ]
 
-    def __init__(self, width, height,lst):
+    def __init__(self, width, height, lst):
 
         self.window_width = width
         self.window_height = height
@@ -70,16 +71,18 @@ class DrawingInfo:
         else:
             self.start_x = self.SIDE_PAD // 2
 
+# This class represents each individual bar and allows us to store
+# the x and y values associated with it to calculate outside of the
+# draw_lsit function if needed, and to do less work during the drawing process
 class Bars:
     def __init__(self, val):
         self.sort_val = val
         self.x = 0
         self.y = 0
 
+# This clas holds the main drawing functions
 class DrawingManager:
     def __init__(self):
-        self.screen_center = 0  #defined here because only used in these functions
-        self.list_screen_fill = 0
         self.lst = []
 
     '''
@@ -99,7 +102,7 @@ class DrawingManager:
         #first pass, make bar then set list
         if list_config == 1:
             for i in range(listSize):
-                val = random.randint(min_val,max_val)
+                val = random.randint(min_val, max_val)
                 bar = Bars(val)
                 self.lst.append(bar) #list of bars
         
@@ -107,13 +110,14 @@ class DrawingManager:
         elif list_config == 2:
             for index, bar in enumerate(self.lst):
                 bar.x = draw_info.start_x + index * draw_info.bar_width
-                bar.y = draw_info.window_height - (bar.sort_val - draw_info.min_value)*draw_info.bar_height 
+                bar.y = draw_info.window_height - (bar.sort_val - draw_info.min_value) * draw_info.bar_height 
         
         #third pass, (3,2) don't need to remake bar obj just change val
         elif list_config == 3:
             for index, bar in enumerate(self.lst):
-                bar.sort_val = random.randint(min_val,max_val)
+                bar.sort_val = random.randint(min_val, max_val)
 
+# Called to update bar position and draw list on screen after a swap
     def draw_list(self, draw_info, color_positions = {}, clear_bg = False):
         
         # used for clearing smaller portion of screen when sorting 
@@ -135,8 +139,8 @@ class DrawingManager:
         if clear_bg: #when parent doesnt update display we must update it
             pygame.display.update()
 
-    # takes in drawinfo object, clears screen, then draws the bars 
-    # for each value in list via draw_list function
+# takes in drawinfo object, clears screen, then draws the bars 
+# for each value in list via draw_list function
     def draw(self, draw_info, algo_name, ascending):
         
         draw_info.window.fill(draw_info.BACKGROUND_COLOR)
