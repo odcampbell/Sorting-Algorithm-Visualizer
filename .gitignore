@@ -9,3 +9,4 @@ __pycahce__/
 
 # Ignore any personal text files
 *.txt
+.test.py
