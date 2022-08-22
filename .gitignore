@@ -1,0 +1,11 @@
+# Ignore cache files
+__pycahce__/
+*.pyc
+
+# Ignore database files
+*.bak
+*.dat
+*.dir
+
+# Ignore any personal text files
+*.txt
