@@ -2,11 +2,12 @@
 The code in this repo demonstrates a handful of different sorting algorthms using pygame.
 It is derived from this tutorial # https://youtu.be/twRidO-_vqQ ,
 
-## With the following notable modications:
-**Addition of Selection Sort and Heap Sort Algorithms**
-**Revamped class structure**
-**Additional calculations for bar placement on screen**
-**Aesthetic Makeover**
+With the following notable modications:
+
+- **Addition of Selection Sort and Heap Sort Algorithms**
+- **Revamped class structure**
+- **Additional calculations for bar placement on screen**
+- **Aesthetic Makeover**
 
 To use the code
 1. Clone The Repository
@@ -23,15 +24,15 @@ with the tutorial for a quick comparison, but for the exact source material,
 check this repo: https://github.com/techwithtim/Sorting-Algorithm-Visualizer.git
 
 Here is a current list of commands:
-**T** - 1st press to slow down, 2nd press to speed up
-**N** - to set clock to noram speed (60)
-**A** - ascending order 
-**D** - descending order
-**R** - reset the list
-**S** - selection sort
-**B** - bubble sort
-**I** - insertion sort
-**H** - heap sort
+- **T** - 1st press to slow down, 2nd press to speed up
+- **N** - to set clock to noram speed (60)
+- **A** - ascending order 
+- **D** - descending order
+- **R** - reset the list
+- **S** - selection sort
+- **B** - bubble sort
+- **I** - insertion sort
+- **H** - heap sort
 
 This was a fun introduction to pygame and a chance to use some of the 
 first ever algorthms you learn in a cs degree. As time permits I will also 
