@@ -49,7 +49,7 @@ class DrawingInfo:
         self.window_width = width
         self.window_height = height
         self.window = pygame.display.set_mode((width, height))
-        pygame.display.set_caption("Sorting Algorithim Vizualizer")
+        pygame.display.set_caption("Sorting Algorithim Visualizer")
         self.set_list(lst)
         self.screen_center = self.window_width / 2  
         self.list_screen_fill = (self.SIDE_PAD // 2, self.TOP_PAD,

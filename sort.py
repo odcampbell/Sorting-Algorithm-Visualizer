@@ -36,7 +36,7 @@ class DrawInfo:
         self.height = height
 
         self.window = pygame.display.set_mode((width, height))
-        pygame.display.set_caption("Sorting Algorithim Vizualizer")
+        pygame.display.set_caption("Sorting Algorithim Visualizer")
         self.set_list(lst)
 
     def set_list(self, lst): #parameters
@@ -104,7 +104,7 @@ def draw_list(draw_info, color_positions = {}, clear_bg = False):
         #startring pos for drawing down
         color = draw_info.GRADIENTS[i % 3] #FIXEME
 
-        #maps an index to a color to help vizualize the sort better
+        #maps an index to a color to help visualize the sort better
         if i in color_positions:
             color = color_positions[i]
 
