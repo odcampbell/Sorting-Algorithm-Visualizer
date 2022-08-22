@@ -28,6 +28,7 @@ Here is a current list of commands:
 - **N** - to set clock to noraml speed (60)
 - **A** - ascending order 
 - **D** - descending order
+- **SPACE** - referencing the spacebar, to start sorting
 - **R** - reset the list
 - **S** - selection sort
 - **B** - bubble sort
