@@ -1,4 +1,4 @@
-# Sorting Algorithm Vizualizer
+# Sorting Algorithm Visualizer
 The code in this repo demonstrates a handful of different sorting algorthms using pygame.
 It is derived from this tutorial # https://youtu.be/twRidO-_vqQ ,
 
