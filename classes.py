@@ -1,6 +1,9 @@
 import pygame
 import random 
 
+# This module holds the main classes for drawing and 
+# using the screen in pygame
+
 pygame.init()
 
 class DrawingInfo: 
@@ -19,7 +22,7 @@ class DrawingInfo:
     TOP_PAD = 190 
     listCount = 50
                                      
-    FONT = pygame.font.SysFont('comicsans',20) # Font object for writing in pygame given style and size
+    FONT = pygame.font.SysFont('comicsans',17) # Font object for writing in pygame given style and size
     LARGE_FONT = pygame.font.SysFont('comicsans',30)
 
     GREY_GRADIENTS = [ #used to diferentiate bars
@@ -27,11 +30,13 @@ class DrawingInfo:
         (160,160,160),
         (192,192,192)
     ]
+
     OG_GRADIENTS = [
        (147,112,219),
         (255,165,0),
         (225,100,0)#light
     ]
+    
     BERRY_GRADIENTS = [
        (0, 0, 220),
         (128, 0, 128),
@@ -85,6 +90,9 @@ class DrawingManager:
     Always call either 1 or 3 then 2. Anytime we update a bars's value, it's y val
     must change. Whenever we update a bar's location in the list 
     (via other functions) we must call this function to update it's x value
+    May make more sense to place this fucntion inside of draw_info,
+    but ebcasue of the  co-dependency between the classes, this function
+    might not have an ideal location as it is currently (and was perviously) designed
     '''
     def configure_list(self, listSize, min_val, max_val, list_config, draw_info=None):
         

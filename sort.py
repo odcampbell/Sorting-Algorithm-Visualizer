@@ -76,7 +76,7 @@ def draw(draw_info, algo_name, ascending):
     controls = draw_info.FONT.render("R - Reset | SPACE - Start Sorting | A - Ascending | D - Descending", 1 ,draw_info.BLACK) #sharpness and color
     draw_info.window.blit(controls, (draw_info.width/2 - controls.get_width()/2 , 45))
 
-    sorting = draw_info.FONT.render("I - Insertion Sort | B - Bubble Sort", 1, draw_info.BLACK)
+    sorting = draw_info.FONT.render("B - Bubble Sort", 1, draw_info.BLACK)
     draw_info.window.blit(sorting, (draw_info.width/2 - sorting.get_width()/2 , 75))
 
     draw_list(draw_info) #
@@ -143,7 +143,7 @@ def bubble_sort(draw_info, ascending = True):
 
 def main():
 
-    n = 300
+    n = 50
     min_val = 0
     max_val = 100
     run = True
@@ -152,17 +152,16 @@ def main():
     speed = 60
     clock = pygame.time.Clock()
 
-    
     lst = configure_list(n, min_val, max_val) #predetermined aount of random list of vals in range 
 
-    draw_info = DrawInfo(1000, 600, lst) #instantiation of our class
+    draw_info = DrawInfo(800, 600, lst) #instantiation of our class
 
     sorting_algorithim = bubble_sort #holds sorting function
-    sorting_algo_name = "Big sort"
+    sorting_algo_name = "Bubble Sort"
     sorting_algorithim_generator = None #stores object created by calling sort function
 
     while run:
-       # clock.tick(speed)
+        clock.tick(speed)
 
         if sorting:
             try:
@@ -172,9 +171,6 @@ def main():
                 #reset speed here if you want it to auto
         else:
             draw(draw_info, sorting_algo_name, ascending) #draw_info.draw() self
-
-        #draw(draw_info)
-        #pygame.display.update()
 
         for event in pygame.event.get(): #essentially hitting the x in the corner 
             if event.type == pygame.QUIT:
@@ -196,13 +192,13 @@ def main():
                 sorting = True
                 sorting_algorithim_generator = sorting_algorithim(draw_info, ascending)
 
-            elif event.key == pygame.K_a and not sorting: #ascending
+            elif event.key == pygame.K_a and not sorting:
                 ascending = True
-            elif event.key == pygame.K_d and not sorting: # descending
+            elif event.key == pygame.K_d and not sorting:
                 ascending = False
-            elif event.key == pygame.K_s and not sorting: #FIXME works but clean! speed up and slow down
+            elif event.key == pygame.K_s and not sorting:
                 speed = 20
-            elif event.key == pygame.K_b and not sorting: #FIXME works but clean! speed up and slow down
+            elif event.key == pygame.K_b and not sorting:
                 sorting_algo_name = 'Bubble Sort'
                 sorting_algorithim = bubble_sort
 

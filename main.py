@@ -1,9 +1,10 @@
 # Credits: tech with tim
 # Main Additions:
-# Selection Sort Algorithm
+# Selection Sort and Heap Sort Algorithms
 # Revamped Class Structure - instead of one long file
-# Modifications: calculating 
-# Cosmetic Makeover - added more colors and gradients
+# Other Modifications: 
+# Additional Calculations for bar placement
+# Aesthetic Makeover - added more colors and gradients
 
 import pygame
 import sorting_algorithms
@@ -15,17 +16,21 @@ pygame.init()
 def main():
 
 # variables
+
     screen_width = 800
     screen_height = 600
+
     num_vals = 50 
     min_val = 5 #list bounds
     max_val = 100
-    run = True
+
+    run = True #controls
     sorting = False
     ascending = True
+
     list_config = 1 #controls mode of updating list
     speed = 60 #used for clock which can do at least 600
-    speedUp = True
+    speedUp = True #used to toggle
     clock = pygame.time.Clock() 
 
 # Setting up List and Parameters
@@ -74,7 +79,7 @@ def main():
                 dm.configure_list(num_vals, min_val, max_val,list_config,draw_info) #predetermined aount of random list of vals in range 
                 draw_info.lst = dm.lst #update and now use this list
                 sorting = False
-        # handles space pressesto start sorting, obv only do so if
+        # handles space presses to start sorting, obv only do so if
         # you aren't currntly sorting anything, thus False
             elif event.key == pygame.K_SPACE and sorting == False: 
                 sorting = True
@@ -106,6 +111,16 @@ def main():
             elif event.key == pygame.K_h and not sorting:
                 sorting_algo_name = 'Heap Sort'
                 sorting_algorithim = sorting_algorithms.heap_sort
+                ''' 
+                heap sort will appear to run again on space press because
+                it builds a max heap each time before it starts sorting,
+                and since the heapify function updates the x value of of
+                each bar during that process, 
+                when heap sort starts sorting and thus drawing, it does so from the new positions
+                of the max heap, and not the prior sorted array
+                In fact, all the other sorting functions run again, but since they only
+                alter the list when its unsorted, nothing is changed on the screen
+                '''
     pygame.quit()
 
 

@@ -1,9 +1,7 @@
-
-#hold merge sort
-#hold quicksort
-#holdheapsort 
-#from classes import DrawingInfo, DrawingManager
 import pygame
+
+# This module holds the sorting algorthms implemented
+
 pygame.init()
 
 #take in a DrawingInfo object, a draw_manager object, and boolean
@@ -69,6 +67,9 @@ def selection_sort(draw_info, manager, ascending=True):
 
     return lst
 
+# makes a max or min heap out of given index
+# takes in draw_info isntead of a list because of
+# the need for information from the class
 def heapify(draw_info, list_size, index, manager, ascending):
     dm = manager
     lst = draw_info.lst
@@ -94,20 +95,20 @@ def heapify(draw_info, list_size, index, manager, ascending):
         #dm.draw_list(draw_info, {index : draw_info.GREEN, max: draw_info.RED}, True)
         heapify(draw_info, list_size,max,dm,ascending)
 
-    return lst #necessarry?
+    #return lst #necessarry?
 
 
 def heap_sort(draw_info, manager, ascending=True):
     dm = manager
-    size = len(draw_info.lst)
+    list_size = len(draw_info.lst)
 
-    for i in range(size//2-1, -1, -1): #FIXME how to count down in python, whiel?
-        draw_info.lst = heapify(draw_info,size, i, dm, ascending)
+    for i in range(list_size//2-1, -1, -1): #FIXME how to count down in python, whiel?
+        heapify(draw_info,list_size, i, dm, ascending)
 
-    for i in range(size-1,0,-1):
+    for i in range(list_size-1,0,-1):
         draw_info.lst[i],  draw_info.lst[0] =  draw_info.lst[0],  draw_info.lst[i]
         dm.draw_list(draw_info, {i : draw_info.GREEN, 0: draw_info.RED}, True)
-        draw_info.lst = heapify(draw_info,i, 0,dm, ascending)
+        heapify(draw_info,i, 0,dm, ascending)
         yield True
     
     return draw_info.lst
