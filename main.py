@@ -14,7 +14,7 @@ def main():
     screen_width = 800
     screen_height = 600
 
-    num_vals = 70 
+    num_vals = 50
     min_val = 5 #list bounds
     max_val = 100
 

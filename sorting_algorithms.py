@@ -115,55 +115,7 @@ def heap_sort(draw_info, manager, ascending=True):
 
 # made so I didnt have to type draw_info.lst[] every time
 # actually performs the sort
-#implementation adapted from: https://www.geeksforgeeks.org/merge-sort/
-def merge_sort_helper(draw_info, manager, ascending=True, sort_list = []):
-    if len(sort_list) > 1:
-        
-        # Get middle of list
-        mid = len(sort_list) // 2
-
-        # Divide list into two halves
-        L = sort_list[:mid]
-        R = sort_list[mid:]
-
-        # Recursively divide and sort each half
-        merge_sort_helper(draw_info, manager, ascending, L)
-        merge_sort_helper(draw_info, manager, ascending, R)
-
-        i = j = k = 0
-
-        # Copy data to temp arrays L[] and R[]
-        while i < len(L) and j < len(R):
-            if L[i].sort_val < R[j].sort_val:
-                sort_list[k] = L[i]
-                #manager.draw_list(draw_info, {k : draw_info.GREEN, i: draw_info.RED}, True)
-                i += 1
-                
-            else:
-                sort_list[k] = R[j]
-                #manager.draw_list(draw_info, {k : draw_info.GREEN, j: draw_info.RED}, True)
-                j += 1
-
-            yield True    
-            k += 1
- 
-        # Checking if any element was left
-        while i < len(L):
-            sort_list[k] = L[i]
-            #manager.draw_list(draw_info, {k : draw_info.GREEN, i: draw_info.RED}, True)
-            i += 1
-            k += 1
-            yield True
-            
-        while j < len(R):
-            sort_list[k] = R[j]
-            #manager.draw_list(draw_info, {k : draw_info.GREEN, j: draw_info.RED}, True) 
-            j += 1
-            k += 1
-            yield True
-
-    
-
+#implementation adapted from: https://stackoverflow.com/questions/62993954/how-do-i-make-this-merge-sort-function-a-generator-python
 
  #def merge_sort(draw_info, manager, ascending=True, sort_list = None):
 def merge_sort(draw_info, manager, ascending=True):
@@ -206,6 +158,6 @@ def merge_sort(draw_info, manager, ascending=True):
             
             yield arr
     yield from mergeSortRec(0, len(arr))  # call inner function with start/end arguments
-    manager.draw_list(draw_info, {3 : draw_info.GREEN, 4: draw_info.RED}, True) 
+    #manager.draw_list(draw_info, {3 : draw_info.GREEN, 4: draw_info.RED}, True) 
     
     yield
