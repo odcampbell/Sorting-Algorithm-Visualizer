@@ -14,7 +14,7 @@ def main():
     screen_width = 800
     screen_height = 600
 
-    num_vals = 50 
+    num_vals = 70 
     min_val = 5 #list bounds
     max_val = 100
 
@@ -108,7 +108,10 @@ def main():
             elif event.key == pygame.K_h and not sorting:
                 sorting_algo_name = 'Heap Sort'
                 sorting_algorithim = sorting_algorithms.heap_sort
-      
+            elif event.key == pygame.K_m and not sorting:
+                sorting_algo_name = 'Merge Sort'
+                sorting_algorithim = sorting_algorithms.merge_sort
+
     pygame.quit()
 
 

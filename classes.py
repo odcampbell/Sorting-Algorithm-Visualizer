@@ -118,8 +118,10 @@ class DrawingManager:
                 bar.sort_val = random.randint(min_val, max_val)
 
 # Called to update bar position and draw list on screen after a swap
-    def draw_list(self, draw_info, color_positions = {}, clear_bg = False):
+    def draw_list(self, draw_info, color_positions = {}, clear_bg = False, merge=False, merge_list = None):
         
+        if merge:
+            draw_info.lst = merge_list
         # used for clearing smaller portion of screen when sorting 
         if clear_bg:
             pygame.draw.rect(draw_info.window, draw_info.BACKGROUND_COLOR, draw_info.list_screen_fill)
@@ -153,7 +155,7 @@ class DrawingManager:
         controls1 = draw_info.FONT.render("T - Toggle Speed | N - Normal Speed", 1 ,draw_info.BLACK) #sharpness and color
         draw_info.window.blit(controls1, (draw_info.screen_center - controls1.get_width()/2 , 75))
 
-        sorting = draw_info.FONT.render("I - Insertion Sort | B - Bubble Sort | S - Selection Sort | H - Heap Sort", 1, draw_info.BLACK)
+        sorting = draw_info.FONT.render("I - Insertion Sort | B - Bubble Sort | S - Selection Sort | H - Heap Sort | M - Merge Sort", 1, draw_info.BLACK)
         draw_info.window.blit(sorting, (draw_info.screen_center - sorting.get_width()/2 , 105))
 
         self.draw_list(draw_info) #

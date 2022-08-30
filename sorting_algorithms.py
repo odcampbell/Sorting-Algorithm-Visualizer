@@ -112,3 +112,100 @@ def heap_sort(draw_info, manager, ascending=True):
         yield True
     
     return draw_info.lst
+
+# made so I didnt have to type draw_info.lst[] every time
+# actually performs the sort
+#implementation adapted from: https://www.geeksforgeeks.org/merge-sort/
+def merge_sort_helper(draw_info, manager, ascending=True, sort_list = []):
+    if len(sort_list) > 1:
+        
+        # Get middle of list
+        mid = len(sort_list) // 2
+
+        # Divide list into two halves
+        L = sort_list[:mid]
+        R = sort_list[mid:]
+
+        # Recursively divide and sort each half
+        merge_sort_helper(draw_info, manager, ascending, L)
+        merge_sort_helper(draw_info, manager, ascending, R)
+
+        i = j = k = 0
+
+        # Copy data to temp arrays L[] and R[]
+        while i < len(L) and j < len(R):
+            if L[i].sort_val < R[j].sort_val:
+                sort_list[k] = L[i]
+                #manager.draw_list(draw_info, {k : draw_info.GREEN, i: draw_info.RED}, True)
+                i += 1
+                
+            else:
+                sort_list[k] = R[j]
+                #manager.draw_list(draw_info, {k : draw_info.GREEN, j: draw_info.RED}, True)
+                j += 1
+
+            yield True    
+            k += 1
+ 
+        # Checking if any element was left
+        while i < len(L):
+            sort_list[k] = L[i]
+            #manager.draw_list(draw_info, {k : draw_info.GREEN, i: draw_info.RED}, True)
+            i += 1
+            k += 1
+            yield True
+            
+        while j < len(R):
+            sort_list[k] = R[j]
+            #manager.draw_list(draw_info, {k : draw_info.GREEN, j: draw_info.RED}, True) 
+            j += 1
+            k += 1
+            yield True
+
+    
+
+
+ #def merge_sort(draw_info, manager, ascending=True, sort_list = None):
+def merge_sort(draw_info, manager, ascending=True):
+    # arr is a unique list that all levels in the recursion tree can access:
+    arr = draw_info.lst
+    def mergeSortRec(start, end):  # separate function that can take start/end indices
+        if end - start > 1:
+            middle = (start + end) // 2
+
+            yield from mergeSortRec(start, middle)  # don't provide slice, but index range
+            manager.draw_list(draw_info, {start : draw_info.GREEN, end: draw_info.RED}, True)  
+            yield from mergeSortRec(middle, end)
+            manager.draw_list(draw_info, {start : draw_info.GREEN, end: draw_info.RED}, True) 
+
+            left = arr[start:middle]
+            right  = arr[middle:end]
+
+            a = 0
+            b = 0
+            c = start
+
+            while a < len(left) and b < len(right):
+                if left[a].sort_val < right[b].sort_val:
+                    arr[c] = left[a]
+                    a += 1
+                else:
+                    arr[c] = right[b]
+                    b += 1
+                c += 1
+
+            while a < len(left):
+                arr[c] = left[a]
+                a += 1
+                c += 1
+
+            while b < len(right):
+                arr[c] = right[b]
+                b += 1
+                c += 1
+            
+            yield arr
+    yield from mergeSortRec(0, len(arr))  # call inner function with start/end arguments
+    manager.draw_list(draw_info, {3 : draw_info.GREEN, 4: draw_info.RED}, True) 
+    
+    yield
