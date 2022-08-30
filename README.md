@@ -34,6 +34,7 @@ Here is a current list of commands:
 - **B** - bubble sort
 - **I** - insertion sort
 - **H** - heap sort
+- **M** - merge sort
 
 This was a fun introduction to pygame and a chance to use some of the 
 first ever algorthms you learn in a cs degree. As time permits I will also 
