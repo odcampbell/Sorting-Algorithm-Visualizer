@@ -7,9 +7,10 @@ import random
 pygame.init()
 
 # This class holds the majority of the data needed for drawing
+# and manages those values dynamically throughout the execution
 class DrawingInfo: 
-    
-    BLACK = 0, 0, 0     #colors
+    #colors
+    BLACK = 0, 0, 0     
     WHITE =  255, 255, 255
     GREEN = 0, 255, 0
     RED = 255, 0, 0
@@ -55,7 +56,8 @@ class DrawingInfo:
         self.list_screen_fill = (self.SIDE_PAD // 2, self.TOP_PAD,
                 self.window_width - self.SIDE_PAD, self.window_height - self.TOP_PAD) 
 
-    def set_list(self, lst): #helps configure list
+# helps configure variables for drawing the list based on the current values
+    def set_list(self, lst): 
 
         self.lst = lst
         self.min_value = min(lst, key=lambda x: x.sort_val).sort_val
@@ -71,6 +73,7 @@ class DrawingInfo:
         else:
             self.start_x = self.SIDE_PAD // 2
 
+# Used to make pygame window resize decently as height and width change
     def resize_screen(self, width, height):
         self.window_width = width
         self.window_height = height
@@ -86,9 +89,10 @@ class DrawingInfo:
             self.start_x = (self.SIDE_PAD // 2) + ((self.screen - self.actual_bar_space) // 2)
         else:
             self.start_x = self.SIDE_PAD // 2        
+
 # This class represents each individual bar and allows us to store
 # the x and y values associated with it to calculate outside of the
-# draw_lsit function if needed, and to do less work during the drawing process
+# draw_list function if needed, and to do less work during the drawing process
 class Bars:
     def __init__(self, val):
         self.sort_val = val
@@ -101,15 +105,15 @@ class DrawingManager:
         self.lst = []
 
     '''
-    used every tiem you want a new set of random nums, or when sorting
+    used every time you want a new set of random nums, or when sorting
     list_config = 1 : create list of bar objects assigned random values, 
     list_config = 2 : update visual bar coordinates
     list_config = 3 : assign the previously created bar object a new value
-    Always call either 1 or 3 then 2. Anytime we update a bars's value, it's y val
-    must change. Whenever we update a bar's location in the list 
+    Always call either 1 or 3 then 2. Anytime we update a bars's sorting value, it's y val
+    for drawing must change. Whenever we update a bar's location in the list 
     (via other functions) we must call this function to update it's x value
     May make more sense to place this fucntion inside of draw_info,
-    but ebcasue of the  co-dependency between the classes, this function
+    but becasue of the co-dependency between the classes, this function
     might not have an ideal location as it is currently (and was perviously) designed
     '''
     def configure_list(self, listSize, min_val, max_val, list_config, draw_info=None):

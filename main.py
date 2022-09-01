@@ -14,7 +14,7 @@ def main():
     screen_width = 800
     screen_height = 600
 
-    num_vals = 90
+    num_vals = 50
     min_val = 5 #list bounds
     max_val = 100
 
@@ -71,7 +71,7 @@ def main():
                 draw_info.set_list(dm.lst) #set new list parameters like min, max,
 
                 list_config = 2 #set new x and y values
-                dm.configure_list(num_vals, min_val, max_val, list_config, draw_info) #predetermined aount of random list of vals in range 
+                dm.configure_list(num_vals, min_val, max_val, list_config, draw_info)
                 draw_info.lst = dm.lst #update and now use this list
                 sorting = False
     
@@ -79,7 +79,6 @@ def main():
                 sorting = True
                 sorting_algorithm_generator = sorting_algorithm(draw_info, dm, ascending)
                 
-
             elif event.key == pygame.K_a and not sorting: #ascending
                 ascending = True
 
@@ -112,6 +111,7 @@ def main():
             elif event.key == pygame.K_h and not sorting:
                 sorting_algo_name = 'Heap Sort'
                 sorting_algorithm = sorting_algorithms.heap_sort
+                
             elif event.key == pygame.K_m and not sorting:
                 sorting_algo_name = 'Merge Sort'
                 sorting_algorithm = sorting_algorithms.merge_sort

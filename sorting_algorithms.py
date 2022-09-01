@@ -4,7 +4,6 @@ import pygame
 
 pygame.init()
 
-#take in a DrawingInfo object, a draw_manager object, and boolean
 def bubble_sort(draw_info, manager, ascending = True):
     lst = draw_info.lst #updated list
     dm = manager #functions
@@ -92,10 +91,7 @@ def heapify(draw_info, list_size, index, manager, ascending):
         lst[(index)], lst[(max)] = lst[(max)], lst[(index)] #defined in algorithm!!
         lst[(index)].x = draw_info.start_x + index * draw_info.bar_width 
         lst[(max)].x = draw_info.start_x + max * draw_info.bar_width  
-        #dm.draw_list(draw_info, {index : draw_info.GREEN, max: draw_info.RED}, True)
         heapify(draw_info, list_size,max,dm,ascending)
-
-    #return lst #necessarry?
 
 
 def heap_sort(draw_info, manager, ascending=True):
