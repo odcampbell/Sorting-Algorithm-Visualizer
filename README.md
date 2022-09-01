@@ -5,7 +5,7 @@ It is derived from this tutorial # https://youtu.be/twRidO-_vqQ ,
 with the following notable modications:
 
 - **Addition of Selection, Heap, and Merge Sort Algorithms**
-- **Revamped class and Module structure**
+- **Revamped Class and Module structure**
 - **Additional calculations for bar placement on screen**
 - **Aesthetic Makeover**
 
@@ -45,6 +45,6 @@ each bar during that (build max heap) process,
 when heap sort starts sorting and thus drawing, it does so from the new positions
 of the max heap and not the prior sorted array.
 In fact, all the other sorting functions run again when the space bar
-is pressed, but since they only alter the list when its unsorted,
+is pressed, but since most only alter the list when its unsorted,
 nothing is changed on the screen. 
 
