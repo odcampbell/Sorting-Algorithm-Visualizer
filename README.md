@@ -36,10 +36,6 @@ Here is a current list of commands:
 - **H** - heap sort
 - **M** - merge sort
 
-This was a fun introduction to pygame and a chance to use some of the 
-first ever algorthms you learn in a cs degree. As time permits I will also 
-implement merge sort and possibly even more sorting algorthms.
-
 **A note on Heap Sort**
 - Heap sort will appear to run again when you press the space bar after it has 
 fully sorted the list, because it builds a max heap each time 
