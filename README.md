@@ -4,8 +4,8 @@ It is derived from this tutorial # https://youtu.be/twRidO-_vqQ ,
 
 with the following notable modications:
 
-- **Addition of Selection Sort and Heap Sort Algorithms**
-- **Revamped class structure**
+- **Addition of Selection, Heap, and Merge Sort Algorithms**
+- **Revamped class and Module structure**
 - **Additional calculations for bar placement on screen**
 - **Aesthetic Makeover**
 
