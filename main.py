@@ -14,7 +14,7 @@ def main():
     screen_width = 800
     screen_height = 600
 
-    num_vals = 50
+    num_vals = 90
     min_val = 5 #list bounds
     max_val = 100
 
@@ -36,16 +36,16 @@ def main():
     list_config = 2 # add x,y, coordinates
     dm.configure_list(num_vals, min_val, max_val, list_config, draw_info ) 
     
-    sorting_algorithim = sorting_algorithms.bubble_sort #holds sorting function
+    sorting_algorithm = sorting_algorithms.bubble_sort #holds sorting function
     sorting_algo_name = "Bubble Sort"
-    sorting_algorithim_generator = None #stores object created by calling sort function
+    sorting_algorithm_generator = None #stores object created by calling sort function
 
     while run:
         clock.tick(speed)
 
         if sorting:
             try:
-                next(sorting_algorithim_generator)
+                next(sorting_algorithm_generator)
             except StopIteration:
                 sorting = False
         else:
@@ -55,10 +55,14 @@ def main():
         for event in pygame.event.get(): #essentially hitting the x in the corner 
             if event.type == pygame.QUIT:
                 run = False
-            
+                
+            if event.type == pygame.VIDEORESIZE:
+                draw_info.resize_screen(event.w,event.h)
+
             if event.type != pygame.KEYDOWN: #next event in forloop if no key presses
                 continue
-
+            
+            
         # handles k presses for r, resets list
         # generates new list and draws it, 
             if event.key == pygame.K_r: 
@@ -73,7 +77,7 @@ def main():
     
             elif event.key == pygame.K_SPACE and sorting == False: 
                 sorting = True
-                sorting_algorithim_generator = sorting_algorithim(draw_info, dm, ascending)
+                sorting_algorithm_generator = sorting_algorithm(draw_info, dm, ascending)
                 
 
             elif event.key == pygame.K_a and not sorting: #ascending
@@ -94,23 +98,23 @@ def main():
                     speedUp = True
 
             elif event.key == pygame.K_i and not sorting:
-                sorting_algo_name = 'InsertionSort'
-                sorting_algorithim = sorting_algorithms.insertion_sort
+                sorting_algo_name = 'Insertion Sort'
+                sorting_algorithm = sorting_algorithms.insertion_sort
 
             elif event.key == pygame.K_b and not sorting:
                 sorting_algo_name = 'Bubble Sort'
-                sorting_algorithim = sorting_algorithms.bubble_sort
+                sorting_algorithm = sorting_algorithms.bubble_sort
 
             elif event.key == pygame.K_s and not sorting:
                 sorting_algo_name = 'Selection Sort'
-                sorting_algorithim = sorting_algorithms.selection_sort
+                sorting_algorithm = sorting_algorithms.selection_sort
 
             elif event.key == pygame.K_h and not sorting:
                 sorting_algo_name = 'Heap Sort'
-                sorting_algorithim = sorting_algorithms.heap_sort
+                sorting_algorithm = sorting_algorithms.heap_sort
             elif event.key == pygame.K_m and not sorting:
                 sorting_algo_name = 'Merge Sort'
-                sorting_algorithim = sorting_algorithms.merge_sort
+                sorting_algorithm = sorting_algorithms.merge_sort
 
     pygame.quit()
 

@@ -48,7 +48,7 @@ class DrawingInfo:
 
         self.window_width = width
         self.window_height = height
-        self.window = pygame.display.set_mode((width, height))
+        self.window = pygame.display.set_mode((width, height), pygame.RESIZABLE)
         pygame.display.set_caption("Sorting Algorithim Visualizer")
         self.set_list(lst)
         self.screen_center = self.window_width / 2  
@@ -71,6 +71,21 @@ class DrawingInfo:
         else:
             self.start_x = self.SIDE_PAD // 2
 
+    def resize_screen(self, width, height):
+        self.window_width = width
+        self.window_height = height
+        self.window = pygame.display.set_mode((width, height), pygame.RESIZABLE)
+        self.screen_center = self.window_width / 2  
+        self.list_screen_fill = (self.SIDE_PAD // 2, self.TOP_PAD,
+                self.window_width - self.SIDE_PAD, self.window_height - self.TOP_PAD)
+        self.bar_width = int((self.window_width - self.SIDE_PAD) / len(self.lst))
+        self.bar_height = int((self.window_height - self.TOP_PAD) / (self.max_value - self.min_value))
+        self.actual_bar_space = self.bar_width * len(self.lst)
+        self.screen = self.window_width - self.SIDE_PAD
+        if (self.actual_bar_space) < (self.screen): 
+            self.start_x = (self.SIDE_PAD // 2) + ((self.screen - self.actual_bar_space) // 2)
+        else:
+            self.start_x = self.SIDE_PAD // 2        
 # This class represents each individual bar and allows us to store
 # the x and y values associated with it to calculate outside of the
 # draw_lsit function if needed, and to do less work during the drawing process

@@ -113,11 +113,13 @@ def heap_sort(draw_info, manager, ascending=True):
     
     return draw_info.lst
 
-# made so I didnt have to type draw_info.lst[] every time
-# actually performs the sort
-#implementation adapted from: https://stackoverflow.com/questions/62993954/how-do-i-make-this-merge-sort-function-a-generator-python
 
- #def merge_sort(draw_info, manager, ascending=True, sort_list = None):
+# Implementation adapted from: https://stackoverflow.com/questions/62993954/how-do-i-make-this-merge-sort-function-a-generator-python
+# Performs merge sort by passing in start and end indexes to inner function 
+# instead of passing in smaller and smaller lists
+# This gives access to the state of the entire list for drawing purposes, instead of
+# smaller subsets of the main list that other recursive implementations would return
+
 def merge_sort(draw_info, manager, ascending=True):
     # arr is a unique list that all levels in the recursion tree can access:
     arr = draw_info.lst
@@ -138,12 +140,22 @@ def merge_sort(draw_info, manager, ascending=True):
             c = start
 
             while a < len(left) and b < len(right):
-                if left[a].sort_val < right[b].sort_val:
-                    arr[c] = left[a]
-                    a += 1
-                else:
-                    arr[c] = right[b]
-                    b += 1
+                if ascending:
+                    if (left[a].sort_val < right[b].sort_val) :
+                        arr[c] = left[a]
+                        a += 1
+                    else:
+                        arr[c] = right[b]
+                        b += 1
+                
+                if not ascending:
+                    if (left[a].sort_val > right[b].sort_val) :
+                        arr[c] = left[a]
+                        a += 1
+                    else:
+                        arr[c] = right[b]
+                        b += 1
+
                 c += 1
 
             while a < len(left):
