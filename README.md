@@ -25,7 +25,7 @@ check this repo: https://github.com/techwithtim/Sorting-Algorithm-Visualizer.git
 
 Here is a current list of commands:
 - **T** - 1st press to slow down, 2nd press to speed up
-- **N** - to set clock to noraml speed (60)
+- **N** - to set clock to normal speed (60)
 - **A** - ascending order 
 - **D** - descending order
 - **SPACE** - referencing the spacebar, to start sorting
